@@ -10,36 +10,29 @@ import bcrypt from 'bcrypt';
 const app = express();
 
 // ✅ 1. CORS setup
-const allowedOrigins = [
-  'http://localhost:3000', // Local frontend
-  'https://pranshucoderr.netlify.app' // Production frontend
-];
-
-app.use(cors({
-  origin: function(origin, callback){
-    // allow requests with no origin (like Postman, mobile apps)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  methods: ['GET','POST','OPTIONS'],
-  allowedHeaders: ['Content-Type','Authorization'],
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://pranshucoderr.netlify.app'],
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
-}));
+};
 
-// ✅ 2. Body parser
-app.use(bodyParser.json());
+app.use(cors(corsOptions));
+app.use(express.json());
 
-// ✅ 3. Preflight OPTIONS request handle
-app.options('*', cors({
-  origin: allowedOrigins,
-  methods: ['GET','POST','OPTIONS'],
-  allowedHeaders: ['Content-Type','Authorization'],
-  credentials: true
-}));
+// routes
+app.post('/send-otp', (req, res) => {
+  res.json({ success: true });
+});
+
+// agar koi wildcard route chahiye, Express v5 me ye syntax use karo:
+app.all('*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
+
+
+
 
 // ✅ 4. Routes
 app.post('/send-otp', (req, res) => {
