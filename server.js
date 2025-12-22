@@ -32,8 +32,6 @@ app.all('*', (req, res) => {
 
 
 
-
-
 // ✅ 4. Routes
 app.post('/send-otp', (req, res) => {
   // OTP logic here
@@ -215,6 +213,9 @@ app.get('/offersByStore', (req, res) => {
     }
     res.json({ success: true, data: results });
   });
+});
+app.all('/:path*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
 });
 
 // Server Listen
