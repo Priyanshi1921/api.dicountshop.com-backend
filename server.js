@@ -9,7 +9,7 @@ import bcrypt from 'bcrypt';
 
 const app = express();
 app.use(cors({
-  origin: 'https://pranshucoderr.netlify.app',  // tumhara frontend URL
+  origin: ['http://localhost:3000', 'https://pranshucoderr.netlify.app'],
   methods: ['GET','POST'],
   credentials: true
 }));
