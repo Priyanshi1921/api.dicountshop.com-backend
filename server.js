@@ -1,3 +1,4 @@
+import { match } from 'path-to-regexp';
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
@@ -214,7 +215,8 @@ app.get('/offersByStore', (req, res) => {
     res.json({ success: true, data: results });
   });
 });
-app.all('/:path*', (req, res) => {
+
+app.all('(.*)', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
