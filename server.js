@@ -8,7 +8,11 @@ import mysql from 'mysql2';
 import bcrypt from 'bcrypt';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://pranshucoderr.netlify.app',  // tumhara frontend URL
+  methods: ['GET','POST'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 // In-memory OTP store
