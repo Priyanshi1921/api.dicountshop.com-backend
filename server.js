@@ -216,9 +216,6 @@ app.get('/offersByStore', (req, res) => {
   });
 });
 
-app.all('(.*)', (req, res) => {
-  res.status(404).json({ message: 'Route not found' });
-});
 
 // Server Listen
 app.listen(5000, () => console.log('🚀 Server running on http://localhost:5000'));
