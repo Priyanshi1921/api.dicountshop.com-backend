@@ -1,5 +1,31 @@
 {
   "dependencies": {
-    "dotenv": "^17.2.3"
-  }
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mysql2": "^3.16.0",
+    "nodemailer": "^7.0.12"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Priyanshi1921/api.dicountshop.com-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Priyanshi1921/api.dicountshop.com-backend/issues"
+  },
+  "homepage": "https://github.com/Priyanshi1921/api.dicountshop.com-backend#readme"
 }
